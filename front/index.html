@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PetShop - Animais (PHP + MySQL/Laragon)</title>
+</head>
+<body>
+    <header>
+        <h1>PetShop - Animais</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Rota — animais</h2>
+            <pre id="todos">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — animais/especie?especie=Cachorro</h2>
+            <pre id="filtro">carregando...</pre>
+        </section>
+        
+        <section>
+            <h2>Rota — animais/raca?raca=Poodle</h2>
+            <pre id="raca">carregando...</pre>
+        </section>
+
+        <section>
+            <h2>Rota — animais/idade-media</h2>
+            <pre id="idade-media">carregando...</pre>
+        </section>
+    </main>
+    <footer>
+        <h2>By Lucas</h2>
+    </footer>
+
+    <script>
+        const base = "http://localhost/petshop/back/index.php";
+
+        // Rota 1: Todos os animais
+        fetch(`${base}?rota=animais`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("todos").textContent = JSON.stringify(dados, null, 2));
+
+        // Rota 2: Filtro por Espécie
+        fetch(`${base}?rota=animais/especie&especie=Cachorro`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("filtro").textContent = JSON.stringify(dados, null, 2));
+
+        // Rota 3: Filtro por Raça
+        fetch(`${base}?rota=animais/raca&raca=Poodle`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("raca").textContent = JSON.stringify(dados, null, 2));
+
+        // Rota 4: Idade Média
+        fetch(`${base}?rota=animais/idade-media`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("idade-media").textContent = JSON.stringify(dados, null, 2));
+    </script>
+</body>
+</html>
