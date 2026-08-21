@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PetShop - Animais e Serviços</title>
+</head>
+<body>
+    <header>
+        <h1>PetShop - Dashboard de Testes</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Rota — animais</h2>
+            <pre id="todos">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — animais/especie?especie=Cachorro</h2>
+            <pre id="filtro">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — animais/raca?raca=Poodle</h2>
+            <pre id="raca">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — animais/idade-media</h2>
+            <pre id="idade-media">carregando...</pre>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Rota — servicos</h2>
+            <pre id="servicos-todos">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — servicos/categoria?categoria=Estética</h2>
+            <pre id="servicos-categoria">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — servicos/media-preco</h2>
+            <pre id="servicos-media">carregando...</pre>
+        </section>
+        <section>
+            <h2>Rota — servicos/maior-preco</h2>
+            <pre id="servicos-maior">carregando...</pre>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Rota — animais-servicos</h2>
+            <pre id="animais-servicos">carregando...</pre>
+        </section>
+    </main>
+    <footer>
+        <h2>By Lucas</h2>
+    </footer>
+
+    <script>
+        const base = "http://localhost/petshop/back/index.php";
+
+        fetch(`${base}?rota=animais`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("todos").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=animais/especie&especie=Cachorro`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("filtro").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=animais/raca&raca=Poodle`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("raca").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=animais/idade-media`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("idade-media").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=servicos`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("servicos-todos").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=servicos/categoria&categoria=Estética`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("servicos-categoria").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=servicos/media-preco`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("servicos-media").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=servicos/maior-preco`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("servicos-maior").textContent = JSON.stringify(dados, null, 2));
+
+        fetch(`${base}?rota=animais-servicos`)
+            .then(r => r.json())
+            .then(dados => document.getElementById("animais-servicos").textContent = JSON.stringify(dados, null, 2));
+    </script>
+</body>
+</html>
